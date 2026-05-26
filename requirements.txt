@@ -1,12 +1,8 @@
-openai
-httpx
-Pillow
-PyMuPDF
-moviepy
-elevenlabs
-wheel
-python-dotenv
-torch
-opencv-python
-scikit-image
-tenacity
+# Core Streamlit panel narrator dependencies.
+# Tested target: Python 3.10+ on Windows and macOS.
+openai>=1.40,<3
+python-dotenv>=1.0,<2
+streamlit>=1.36,<2
+pillow>=10,<12
+requests>=2.31,<3
+tenacity>=8,<10

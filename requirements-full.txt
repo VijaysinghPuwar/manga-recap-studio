@@ -1,0 +1,12 @@
+-r requirements.txt
+
+# Optional dependencies for the PDF/video recap pipeline and panel text eraser.
+elevenlabs>=2.0,<3
+moviepy>=2.0,<3
+PyMuPDF>=1.24,<2
+opencv-python>=4.9,<5
+opencv-contrib-python>=4.9,<5
+scikit-image>=0.22,<1
+tqdm>=4.66,<5
+torch>=2.2
+torchvision>=0.17

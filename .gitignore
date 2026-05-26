@@ -1,11 +1,11 @@
 __pycache__
 
 venv
+.venv
 
 .DS_Store
 
 .env
-.env.example
 
 # naruto/
 one-piece/
@@ -16,3 +16,9 @@ golden/
 berserk/
 
 .ipynb_checkpoints/
+
+.env
+venv/
+.venv/
+__pycache__/
+panel_runs/

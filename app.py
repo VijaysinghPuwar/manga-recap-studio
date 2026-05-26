@@ -1,13 +1,10 @@
 from dotenv import load_dotenv
 from openai import OpenAI
-from elevenlabs.client import AsyncElevenLabs
 import asyncio
 import json
 import os
 import argparse
 import concurrent.futures
-import time
-import random
 
 from manga_extraction import (
     extract_all_pages_as_images,
@@ -33,7 +30,6 @@ from prompts import (
     KEY_PANEL_IDENTIFICATION_INSTRUCTIONS,
 )
 from citation_processing import extract_text_and_citations, extract_script
-from movie_director import make_movie
 
 from openai import APIError, RateLimitError
 from tenacity import retry, stop_after_attempt, wait_exponential
@@ -73,6 +69,8 @@ async def main(volume_number, manga, text_only=False):
     # Only initialize ElevenLabs client if we're not in text-only mode
     narration_client = None
     if not text_only:
+        from elevenlabs.client import AsyncElevenLabs
+
         narration_client = AsyncElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
 
     print("Extracting all pages from the volume...")
@@ -346,6 +344,8 @@ async def main(volume_number, manga, text_only=False):
         write_text_to_file(movie_script, manga, volume_number)
         print("Text-only mode: Skipping narration and video creation.")
     else:
+        from movie_director import make_movie
+
         await make_movie(movie_script, manga, volume_number, narration_client)
 
 if __name__ == "__main__":
